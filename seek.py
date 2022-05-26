@@ -5,17 +5,7 @@ import csv
 results = []
 file = open('results_seek.csv', 'w', encoding='utf-8')
 writer = csv.writer(file)
-writer.writerow(['Url', 'Job-Title', 'Company-name', 'Company-link', 'Job-location', 'Job-fields', 'Job-hours', 'Job-rating', 'No-of-reviews', 'Job-description'])
-starting_url = "https://www.seek.com.au/jobs"
-soup = BeautifulSoup(requests.get(starting_url).content, "lxml")
-next_page = soup.select_one('[data-automation="page-next"]')
-i = 1
-while next_page:
-    page = BeautifulSoup(requests.get(starting_url + f"?page={i}").content, "lxml")
-    for job_link in page.select("._2S5REPk"):
-        job_response = BeautifulSoup(requests.get("https://www.seek.com.au" + job_link.attrs['href']).content, "lxml")
-        item = {
-            "job-url": "https://www.seek.com.au" + job_link.attrs['href'],
+writer.writerou" + job_link.attrs['href'],
             'job-title': '',
             'company-name': '',
             'company-link': '',
